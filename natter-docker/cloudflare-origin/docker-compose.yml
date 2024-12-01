@@ -1,6 +1,6 @@
 version: "3"
 services:
-  natter-mc:
+  natter-cf-origin:
     command: -e /opt/cf-origin.py -r
     volumes:
       - ./cf-origin.py:/opt/cf-origin.py
