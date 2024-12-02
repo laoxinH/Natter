@@ -128,7 +128,7 @@ class CloudFlareDNS:
     def _get_origin_ruleset_id_and_rule_id(self, name, description):
         zone_id = self._find_zone_id(name)
         data = self._url_req(
-            f"https://api.cloudflare.com/client/v4/zones/46f350f8845962e5bbed5d98f613e617/rulesets/phases/http_request_origin/entrypoint"
+            f"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_origin/entrypoint"
         )
         for rule_data in data["result"]["rules"]:
             if rule_data["description"] == description:
@@ -145,9 +145,6 @@ class CloudFlareDNS:
                 "description": description,
                 "expression": expression,
                 "action": "route",
-                # "action_parameters": {
-                #     "id": "4814384a9e5d4991b9815dcfc25d2f1f"
-                # },
                 "ref": "my_ref",
                 "action_parameters": {
                     'origin': {'port': port}

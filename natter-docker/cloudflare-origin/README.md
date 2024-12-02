@@ -42,3 +42,16 @@ docker compose logs -f
 ```bash
 docker compose down
 ```
+
+
+## 修改参数
+
+### 需要暴露的端口号
+
+修改 `natter-cf-origin:` 部分：
+
+```yaml
+command: -e /opt/cf-origin.py -p 80 -r
+```
+
+将 `80` 修改为需要对外访问的端口。
